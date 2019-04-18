@@ -1,0 +1,17 @@
+.navbar {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background-color: #2C3345;
+    margin-bottom: 10px;
+}
+
+.navbar-brand {
+    font-family: 'Roboto Condensed';
+    text-transform: uppercase;
+    font-weight: 900;
+    color: white;
+    outline: medium none;
+    font-size: 30px;
+    :visited {
+        color: white;
+    }
+}

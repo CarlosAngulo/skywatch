@@ -1,0 +1,17 @@
+
+<div class="city-info" [ngStyle]="{'background-image': 'url(\''+backgroundImageVector+'\')' }">
+  <h3 class="city-info__name">{{info.name}}</h3>
+</div>
+
+<div class="weather-info" [ngStyle]="{'background-image': 'url(\''+backgroundImagePicture+'\')', 'background-color': backgroundColor }">
+  
+  <div class="weather-info__description">
+    <fa-icon [icon]="fontAwesome[weatherService.icons[weather.icon]]"></fa-icon>
+    {{ weather.description }}
+  </div>
+  <div class="weather-info__temp">
+    {{ info.main.temp | number:'0.0-0' }}<small>°C</small>
+  </div>
+  
+</div>
+
