@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-  <app-city-preview *ngFor="let city of cities" [info]="city"></app-city-preview>
+  <app-city-preview *ngFor="let city of _cities" [info]="city" (click)="gotoCityDetail(city)"></app-city-preview>
 </div>

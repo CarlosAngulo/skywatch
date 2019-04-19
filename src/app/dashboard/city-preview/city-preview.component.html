@@ -1,0 +1,51 @@
+<div class="container">
+
+  <div class="row city" [ngStyle]="{'background-image': 'url(\'' + _backgroundImage + '\')', 'background-color': info.color }">
+    
+    <div class="city-info col-md-3" [ngStyle]="{'background-color': info.color}">
+      <h3 class="city-info__name">{{ info.name }}</h3>
+      <p>{{ info.excerpt }}</p>
+    </div>
+
+    <div class="weather-info col-sm-12 col-md-9">
+      
+      <div class="weather-info_main">
+        <div class="weather-info__description">
+          <fa-icon [icon]="fontAwesome[_weatherService.icons[_weather.icon]]"></fa-icon>
+          <h4>
+            {{ _weather.main }}
+            <small>{{ _weather.description }}</small>
+          </h4>
+        </div>
+        <div class="weather-info__temp">
+          {{ info.weather.main.temp | number:'0.0-0' }}<small>°C</small>
+        </div>
+      </div>
+      
+      <div class="weather-info__widgets">
+        
+        <div class="weather-info__widgets__wind">
+          <fa-icon [icon]="fontAwesome.faWind"></fa-icon>
+          <span>{{ info.weather.wind.speed }} <small>Km/h</small> </span>
+          Wind
+        </div>
+        
+        <div class="weather-info__widgets__humidity">
+          <fa-icon [icon]="fontAwesome.faTint"></fa-icon>
+          <span>{{ info.weather.main.humidity }} <small>%</small> </span>
+          Humidity
+        </div>
+
+        <div class="weather-info__widgets__pressure">
+          <fa-icon [icon]="fontAwesome.faStopwatch"></fa-icon>
+          <span>{{ info.weather.main.pressure }} <small>bar</small> </span>
+          Pressure
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

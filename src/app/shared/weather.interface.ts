@@ -1,31 +1,45 @@
-export interface cityGroupWeather {
+export interface CityGroupWeather {
     cnt: number,
-    list: CityWeather[];
+    list: CityWeather[],
+}
+
+export interface CityForecast {
+    city: CityInfo,
+    cnt: number,
+    cod: number,
+    list: CityWeather[],
 }
 
 export interface CityWeather {
-    clouds: {
-        all: number,
-    },
-    coord: {
-        lon: number,
-        lat: number,
-    },
+    clouds: Clouds,
+    coord?: Coords,
+    id?: number,
+    name?: string,
     dt: number,
-    id: number,
+    dt_txt?: string,
     main: Main,
-    name: string,
     sys: Sys,
-    visibility: number;
+    visibility?: number;
     weather: WeatherDescrition[],
-    wind: {
+    wind?: {
         speed: number,
         deg: number,
     },
     rain?: {
-        ['3h']: number
+        ['3h']: number,
     },
-    cod?: number
+    cod?: number,
+}
+
+export interface CityInfo {
+    name: string,
+    country: string,
+    lat?: number,
+    lon?: number,
+    iso2?: string,
+    population?: number,
+    type?: string,
+    geoname_id?: number,
 }
 
 export interface WeatherDescrition {
@@ -36,12 +50,13 @@ export interface WeatherDescrition {
 }
 
 export interface Sys {
-    type: number,
-    id: number,
-    message: number,
-    country: string,
-    sunrise: number,
-    sunset: number,
+    type?: number,
+    id?: number,
+    message?: number,
+    country?: string,
+    sunrise?: number,
+    sunset?: number,
+    pod?: string
 }
 
 export interface Main {
@@ -50,4 +65,16 @@ export interface Main {
     humidity: number,
     temp_min: number,
     temp_max: number,
+    grnd_level?: number,
+    sea_level?: number,
+    temp_kf?: number,
+}
+
+export interface Clouds {
+    all: number,
+}
+
+export interface Coords {
+    lon: number,
+    lat: number,
 }

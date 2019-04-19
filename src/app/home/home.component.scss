@@ -31,7 +31,7 @@ h1 {
     font-weight: 900;
     font-family: 'Roboto Condensed';
     background: linear-gradient(to bottom, #FFFFFF 25%, rgba(255,255,255,0) 100%);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
 }

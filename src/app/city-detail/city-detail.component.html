@@ -1,6 +1,17 @@
+<app-navbar></app-navbar>
 
-<div class="city-preview" [ngStyle]="{'background-image': 'url(assets/img/' + info.name.toLowerCase() + '.jpg)'}">
-    <h3>{{info.name}}</h3>
-</div>
+<header [ngStyle]="{'background-image': 'url(\''+ _backgroundImage +'\')'}">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-3">
+                <h2>{{ _city.name }}</h2>
+            </div>
+            <div class="col col-md-9">
+    
+            </div>
+        </div>
+    </div>
+</header>
+
 
 

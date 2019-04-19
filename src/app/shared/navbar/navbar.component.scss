@@ -1,7 +1,6 @@
 .navbar {
     border-bottom: 1px solid rgba(255,255,255,0.04);
     background-color: #2C3345;
-    margin-bottom: 10px;
 }
 
 .navbar-brand {
@@ -14,4 +13,9 @@
     :visited {
         color: white;
     }
+}
+
+fa-icon {
+    font-weight: normal;
+    color: #aa89ca;
 }
