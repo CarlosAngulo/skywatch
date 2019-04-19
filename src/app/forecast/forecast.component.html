@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="col-sm-12 chart">
+    <canvas *ngIf="_temperature.length>0" baseChart width="400" height="300"
+      [datasets]="_temperature"
+      [labels]="_lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"></canvas>
+  </div>
+</div>

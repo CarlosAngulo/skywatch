@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 // NgRx
 import { StoreModule } from '@ngrx/store';
@@ -16,6 +16,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CityPreviewComponent } from './dashboard/city-preview/city-preview.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { environment } from 'src/environments/environment.prod';
+import { ForecastModule } from './forecast/forecast.module';
 
 @NgModule({
   declarations: [
@@ -31,13 +32,14 @@ import { environment } from 'src/environments/environment.prod';
     AppRoutingModule,
     FontAwesomeModule,
     CoreModule,
+    ForecastModule,
     StoreModule.forRoot( { weatherDataType: weatherReducer } ),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
     })
   ],
-  providers: [],
+  providers: [{provide:LOCALE_ID, useValue: 'en-US'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

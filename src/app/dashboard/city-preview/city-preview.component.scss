@@ -1,3 +1,7 @@
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import '../../variables.scss';
+
 :host {
     display: block;
     cursor: pointer;
@@ -16,21 +20,36 @@
     background: none no-repeat scroll center bottom transparent;
     background-size: cover;
     background-blend-mode: multiply;
+    margin-bottom: 10px;
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        margin: 0;
+    }
 }
 
 .city-info {
-    height: 330px;
+    height: auto;
     padding: 40px 30px 30px;
     position: relative;
+    margin: 10px;
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        margin: 0;
+        height: 330px;
+    }
 }
 
 .city-info__name {
     color: white;
     font-weight: 900;
-    font-size: 35px;
     position: relative;
     mix-blend-mode: screen;
     z-index: 2;
+    font-size: 35px;
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        font-size: 28px;
+    }
+    @media (min-width: map-get($grid-breakpoints, xl)) {
+        font-size: 35px;
+    }
 }
 
 .city-info__excerpt {
@@ -48,12 +67,15 @@
 }
 
 .weather-info__temp {
-    font-size: 90px;
     font-family: 'Rubik';
     font-weight: 700;
     display: flex;
     align-items: flex-start;
     line-height: 1;
+    font-size: 60px;
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+        font-size: 90px;
+    }
     small {
         font-size: 40px;
         line-height: 1.3em;
@@ -68,7 +90,10 @@
     h4 {
         font-family: 'Rubik';
         font-weight: 700;
-        font-size: 45px;
+        font-size: 40px;
+        @media (min-width: map-get($grid-breakpoints, lg)) {
+            font-size: 45px;
+        }
         small {
             font-size: 23px;
             display: block;
@@ -76,35 +101,63 @@
         }
     }
     fa-icon {
-        font-size: 90px;
+        font-size: 60px;
         line-height: 1;
-        margin-right: 10px;
+        margin-right: 10px;        
+        @media (min-width: map-get($grid-breakpoints, lg)) {
+            font-size: 90px;
+        }
     }
 }
 
 .weather-info_main {
-    height: 70%;
-    display: flex;
+    display: block;
     justify-content: space-between;
+    > div {
+        margin-bottom: 50px;
+        text-align: center;
+        display: block;
+    }
+    @media (min-width: map-get($grid-breakpoints, sm)) {
+        height: 60%;
+        display: flex;
+        > div {
+            margin-bottom: 0px;
+            display: flex;
+        }
+    }
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        height: 70%;
+    }
 }
 
 .weather-info__widgets {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     text-align: center;
     line-height: 1.2;
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+        justify-content: space-around;
+    }
     > div {
         fa-icon {
             display: block;
             font-size: 30px;
+            margin-bottom: 15px;
+            @media (min-width: map-get($grid-breakpoints, sm)) {
+                margin-bottom: 0;
+            }
         }
         span {
             display: block;
-            font-size: 30px;
+            font-size: 22px;
             font-family: 'Rubik';
             font-weight: 700;
             small {
                 font-size: 20px;
+            }
+            @media (min-width: map-get($grid-breakpoints, md)) {
+                font-size: 30px;
             }
         }
     }

@@ -20,7 +20,7 @@ export class CitiesService {
       name: 'Zurich',
       description: 'is the capital and the largest city of Portugal, with an estimated population of 505,526[1] within its administrative limits in an area of 100.05 km2.[3] Its urban area extends beyond the city\'s administrative limits with a population of around 2.8 million people, being the 11th-most populous urban area in the European Union.[4] About 3 million people live in the Lisbon Metropolitan Area, including the Portuguese Riviera, (which represents approximately 27% of the country\'s population).',
       excerpt: 'Lisbon is recognised as an alpha-level global city by the Globalization and World Cities (GaWC) Study Group',
-      color: 'rgba(227, 117, 117, 0.8)',
+      color: 'rgba(239, 112, 112, 0.8)',
     },
     {
       id: 2650225,

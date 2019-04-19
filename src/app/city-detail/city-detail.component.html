@@ -1,17 +1,21 @@
 <app-navbar></app-navbar>
 
-<header [ngStyle]="{'background-image': 'url(\''+ _backgroundImage +'\')'}">
-    <div class="container">
-        <div class="row">
-            <div class="col col-md-3">
-                <h2>{{ _city.name }}</h2>
-            </div>
-            <div class="col col-md-9">
-    
+<div class="general" [ngStyle]="{'background-image': 'url(\''+ _backgroundImage +'\')'}">
+    <header [ngStyle]="{'background-image': 'url(\''+ _backgroundImage +'\')'}">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-5 col-lg-4 description" [ngStyle]="{'background-color': _city.color }">
+                    <h2>Forecast</h2>
+                    <h3>{{ _city.name }}</h3>
+                    <p>The following is the {{ _city.name }}'s weather forecast for the present day.</p>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
+    
+    <app-forecast #forecastComponent></app-forecast>
+</div>
+
 
 
 

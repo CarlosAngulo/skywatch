@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WeatherService } from '../core/weather.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducers';
 import { City } from '../shared/city.interface';
 import { CitiesService } from '../core/cities.service';
+import { ForecastComponent } from '../forecast/forecast.component';
 
 @Component({
   selector: 'app-city-detail',
@@ -12,6 +13,8 @@ import { CitiesService } from '../core/cities.service';
   styleUrls: ['./city-detail.component.scss']
 })
 export class CityDetailComponent implements OnInit {
+
+  @ViewChild('forecastComponent') forecast: ForecastComponent;
 
   _city: City;
   _weatherDataType: string;
@@ -23,7 +26,6 @@ export class CityDetailComponent implements OnInit {
                 private _store: Store<AppState> ) {}
 
   ngOnInit() {
-    
     
     this._store.select('weatherDataType').subscribe( weatherDataType => {
       this._weatherDataType = weatherDataType;
@@ -40,7 +42,7 @@ export class CityDetailComponent implements OnInit {
     this._backgroundImage += this._city.name.toLowerCase() + '-big.jpg';
     this._weatherService.getCityForecast( id ).subscribe( forecast => {
       this._citiesService.addForecast( this._city, forecast );
-      console.log(this._city);
+      this.forecast.addForecast(forecast);
     });
   }
 

@@ -12,7 +12,7 @@ import { City } from 'src/app/shared/city.interface';
 export class CityPreviewComponent implements OnInit {
 
   @Input() info: City;
-  fontAwesome = fromFontAwesome;
+  _fontAwesome = fromFontAwesome;
   _backgroundImageVector = 'assets/img/cities/';
   _backgroundImage = 'assets/img/cities/';
   _weather: fromWeatherInterface.WeatherDescrition;
