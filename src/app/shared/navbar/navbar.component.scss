@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .navbar {
     border-bottom: 1px solid rgba(255,255,255,0.04);
     background-color: #2C3345;
@@ -17,5 +19,15 @@
 
 fa-icon {
     font-weight: normal;
-    color: #aa89ca;
+    color: $icon-general-color;
+}
+
+.btn.btn-secondary {
+    background-color: #08080a;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.9em;
+    cursor: pointer;
+    &:hover {
+        background-color: #333;
+    }
 }

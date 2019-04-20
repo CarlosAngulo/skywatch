@@ -35,7 +35,7 @@ export class ForecastComponent implements OnInit {
         {
           id: 'y-axis-1',
           position: 'left',
-          gridLines: { color: 'rgba(255,255,255,0.1)', borderDash: [2,5] },
+          gridLines: { color: 'rgba(255,255,255,0.2)', borderDash: [4,2] },
           ticks: {
             fontColor: 'white',
           }
@@ -61,11 +61,11 @@ export class ForecastComponent implements OnInit {
     },
   };
   public lineChartColors: Color[] = [
-    { // red
-      backgroundColor: 'rgba(128, 224, 255, 0.4)',
+    {
+      backgroundColor: 'rgba(31, 200, 255, 0.3)',
       borderColor: '#0ea2d2',
       pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: 'yellow',
+      pointBorderColor: '#aa89ca',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
@@ -84,7 +84,6 @@ export class ForecastComponent implements OnInit {
     this._forecastList = forecast.list.slice(0,12);
     this._temperature = [];
     this._temperature.push({data: this._forecastList.map( temp => temp.main.temp ), label: 'Temperature' });
-    this._temperature.push({data: this._forecastList.map( temp => temp.main.temp_min ), label: 'Min Temperature' });
     this._lineChartLabels = this._forecastList.map( temp => formatDate(temp.dt_txt, 'h a', 'en-US') );
     console.log(this._temperature);
     

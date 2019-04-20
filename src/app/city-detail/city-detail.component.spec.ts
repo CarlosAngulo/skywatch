@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CityDetailComponent } from './city-detail.component';
+import { NavbarComponent } from '../shared/navbar/navbar.component'
 
 describe('CityDetailComponent', () => {
   let component: CityDetailComponent;
