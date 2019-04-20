@@ -4,7 +4,17 @@
 
 :host {
     display: block;
+}
+
+.city {
     cursor: pointer;
+    background: none no-repeat scroll center bottom transparent;
+    background-size: cover;
+    background-blend-mode: multiply;
+    margin-bottom: 10px;
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        margin: 0;
+    }
     transition: 0.1s all ease-in;
     &:hover {
         transform: perspective(500px) translate3d(0px,0px,6px);
@@ -13,16 +23,6 @@
         border-radius: 4px;
         position: relative;
         z-index: 300;
-    }
-}
-
-.city {
-    background: none no-repeat scroll center bottom transparent;
-    background-size: cover;
-    background-blend-mode: multiply;
-    margin-bottom: 10px;
-    @media (min-width: map-get($grid-breakpoints, md)) {
-        margin: 0;
     }
 }
 

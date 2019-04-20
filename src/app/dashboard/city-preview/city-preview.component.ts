@@ -20,10 +20,9 @@ export class CityPreviewComponent implements OnInit {
   constructor( private _weatherService: WeatherService ) { }
 
   ngOnInit() {
-    console.log(this.info);
     this._weather = this.info.weather.weather[0];
     this._backgroundImageVector += this.info.name.toLowerCase() + '.jpg';
-    this._backgroundImage += this.info.name.toLowerCase() + '-big.jpg';
+    this._backgroundImage += this.info.name.toLowerCase() + '.jpg';
   }
 
 }

@@ -44,7 +44,17 @@ p {
     z-index: 4;
 }
 
-button {
+.btn-primary {
+    color: #fff;
+    font-size: 20px;
+    background-color: #007bff;
+    border-color: #007bff;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed';
+    font-weight: 900;
+    padding: 10px 30px;
+    border-radius: 25px;
+    outline: none;
     position: relative;
     z-index: 5;
 }

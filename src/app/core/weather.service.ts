@@ -39,7 +39,7 @@ export class WeatherService {
     ['50n']: 'faSmog'
   }
 
-  constructor( private _http: HttpClient, private _store: Store<AppState>, private _citiesService: CitiesService ) {
+  constructor( private _http: HttpClient, private _store: Store<AppState> ) {
     this._store.select('weatherDataType').subscribe( weatherDataType => this._weatherDataType = weatherDataType );
   }
   

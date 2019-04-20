@@ -8,5 +8,7 @@ describe('CitiesService', () => {
   it('should be created', () => {
     const service: CitiesService = TestBed.get(CitiesService);
     expect(service).toBeTruthy();
+    expect( service.getCities().length ).toBeGreaterThan( 0 );
   });
+
 });

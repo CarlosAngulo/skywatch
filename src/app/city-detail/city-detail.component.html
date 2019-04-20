@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="general" [ngStyle]="{'background-image': 'url(\''+ _backgroundImage +'\')'}">
+<div class="general" *ngIf="_city.forecast" [ngStyle]="{'background-image': 'url(\''+ _backgroundImageVector +'\')'}">
     <header [ngStyle]="{'background-image': 'url(\''+ _backgroundImage +'\')'}">
         <div class="container">
             <div class="row">
