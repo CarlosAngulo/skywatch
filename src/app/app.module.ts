@@ -4,7 +4,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 // NgRx
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { weatherReducer } from './core/weather.reducer';
+import { unitsSystemReducer } from './core/units.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +33,7 @@ import { ForecastModule } from './forecast/forecast.module';
     FontAwesomeModule,
     CoreModule,
     ForecastModule,
-    StoreModule.forRoot( { weatherDataType: weatherReducer } ),
+    StoreModule.forRoot( { unitsSystem: unitsSystemReducer } ),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production

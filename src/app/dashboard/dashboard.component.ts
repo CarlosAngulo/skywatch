@@ -5,9 +5,6 @@ import * as fromWeather from '../shared/weather.interface';
 import { Router } from '@angular/router';
 import { CitiesService } from '../core/cities.service';
 import { City } from '../shared/city.interface';
-import * as fromWeatherActions from '../core/weather.actions';
-import { Store } from '@ngrx/store';
-import { AppState } from '../app.reducers';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +18,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(  private _wheatherService: WeatherService, 
                 private _router: Router, 
-                private _store: Store<AppState>,
                 private _citiesService: CitiesService ) { }
 
   ngOnInit() {
@@ -34,8 +30,6 @@ export class DashboardComponent implements OnInit {
   }
 
   gotoCityDetail( city: City ) {
-    const action = new fromWeatherActions.WeatherAction();
-    this._store.dispatch(action);
     this._wheatherService.currentCity = city;
     this._router.navigate(['/city', city.id]);
   }

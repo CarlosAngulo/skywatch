@@ -18,7 +18,7 @@
           </h4>
         </div>
         <div class="weather-info__temp">
-          {{ info.weather.main.temp | number:'0.0-0' }}<small>°C</small>
+          {{ _main.temp | number:'0.0-0' }}<small>{{ _unitsSystem.temperatureUnits }}</small>
         </div>
       </div>
       
@@ -26,19 +26,19 @@
         
         <div class="weather-info__widgets__wind">
           <fa-icon [icon]="_fontAwesome.faWind"></fa-icon>
-          <span>{{ info.weather.wind.speed }} <small>Km/h</small> </span>
+          <span>{{ _windSpeed | number:'0.0-1' }} <small>{{ _unitsSystem.speedUnits }}</small> </span>
           Wind
         </div>
         
         <div class="weather-info__widgets__humidity">
           <fa-icon [icon]="_fontAwesome.faTint"></fa-icon>
-          <span>{{ info.weather.main.humidity }} <small>%</small> </span>
+          <span>{{ _main.humidity }} <small>%</small> </span>
           Humidity
         </div>
 
         <div class="weather-info__widgets__pressure">
           <fa-icon [icon]="_fontAwesome.faStopwatch"></fa-icon>
-          <span>{{ info.weather.main.pressure }} <small>bar</small> </span>
+          <span>{{ _main.pressure }} <small>bar</small> </span>
           Pressure
         </div>
 

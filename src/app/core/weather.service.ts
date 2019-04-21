@@ -5,9 +5,8 @@ import { Observable } from 'rxjs';
 import * as fromWeatherInterface from '../shared/weather.interface';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducers';
-import * as fromWeatherActions from './weather.actions';
-import { CitiesService } from './cities.service';
 import { City } from '../shared/city.interface';
+import * as fromUnitsAction from './units.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class WeatherService {
   _groupWeather: fromWeatherInterface.CityGroupWeather;
   _currentCity: City;
   _allocatedCities: number[];
-  _weatherDataType: string;
+  _unitsSystem: string;
   _faIcons = {
     ['01d']: 'faSun',
     ['01n']: 'faMoon',
@@ -40,22 +39,30 @@ export class WeatherService {
   }
 
   constructor( private _http: HttpClient, private _store: Store<AppState> ) {
-    this._store.select('weatherDataType').subscribe( weatherDataType => this._weatherDataType = weatherDataType );
+    this._store.select('unitsSystem').subscribe( unitsSystem => {
+      
+      if ( unitsSystem === fromUnitsAction.METRIC ) {
+        this._unitsSystem = fromUnitsAction.units.METRIC.name;
+      }
+      if ( unitsSystem === fromUnitsAction.IMPERIAL ) {
+        this._unitsSystem = fromUnitsAction.units.IMPERIAL.name;
+      }
+    });
   }
   
   getGroupWeather( group: number[] ): Observable<fromWeatherInterface.CityGroupWeather> {
     this._allocatedCities = group;
-    const groupWeatherUrl = `${environment.openWatherMapApi.baseUrl}${environment.openWatherMapApi.group}?id=${group}&APPID=${environment.openWatherMapApi.key}&units=metric`;
+    const groupWeatherUrl = `${environment.openWatherMapApi.baseUrl}${environment.openWatherMapApi.group}?id=${group}&APPID=${environment.openWatherMapApi.key}&units=${this._unitsSystem}`;
     return this._http.get<fromWeatherInterface.CityGroupWeather>( groupWeatherUrl );
   }
 
   getCityWeather( id: number ): Observable<fromWeatherInterface.CityWeather> {
-    const cityWeatherUrl = `${environment.openWatherMapApi.baseUrl}${environment.openWatherMapApi.weather}?id=${id}&APPID=${environment.openWatherMapApi.key}&units=metric`;
+    const cityWeatherUrl = `${environment.openWatherMapApi.baseUrl}${environment.openWatherMapApi.weather}?id=${id}&APPID=${environment.openWatherMapApi.key}&units=${this._unitsSystem}`;
     return this._http.get<fromWeatherInterface.CityWeather>( cityWeatherUrl );
   }
 
   getCityForecast( id: number ): Observable<fromWeatherInterface.CityForecast> {
-    const cityForecastUrl = `${environment.openWatherMapApi.baseUrl}${environment.openWatherMapApi.forecast}?id=${id}&APPID=${environment.openWatherMapApi.key}&units=metric`;
+    const cityForecastUrl = `${environment.openWatherMapApi.baseUrl}${environment.openWatherMapApi.forecast}?id=${id}&APPID=${environment.openWatherMapApi.key}&units=${this._unitsSystem}`;
     return this._http.get<fromWeatherInterface.CityForecast>( cityForecastUrl );
   }
   

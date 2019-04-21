@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WeatherService } from '../core/weather.service';
-import { Store } from '@ngrx/store';
-import { AppState } from '../app.reducers';
 import { City } from '../shared/city.interface';
 import { CitiesService } from '../core/cities.service';
 import { ForecastComponent } from '../forecast/forecast.component';
@@ -14,30 +12,20 @@ import { ForecastComponent } from '../forecast/forecast.component';
 })
 export class CityDetailComponent implements OnInit {
 
-  @ViewChild('forecastComponent') forecast: ForecastComponent;
+  @ViewChild('forecastComponent') _forecast: ForecastComponent;
 
   _city: City;
-  _weatherDataType: string;
   _backgroundImage = 'assets/img/cities/';
   _backgroundImageVector = 'assets/img/cities/';
 
   constructor(  private _activatedRoute: ActivatedRoute, 
                 private _weatherService: WeatherService,
-                private _citiesService: CitiesService,
-                private _store: Store<AppState> ) {}
+                private _citiesService: CitiesService ) {}
 
-  ngOnInit() {
-
-    this._city = this._citiesService.getCurrentCity( 2267057 )
-    
-    this._store.select('weatherDataType').subscribe( weatherDataType => {
-      this._weatherDataType = weatherDataType;
-    });
-    
+  ngOnInit() {    
     this._activatedRoute.params.subscribe( params => {
       this.implementForecast( params['id'] )
     });
-    
   }
   
   implementForecast( id: number ) {
@@ -46,7 +34,7 @@ export class CityDetailComponent implements OnInit {
     this._backgroundImageVector += this._city.name.toLowerCase() + '.jpg';
     this._weatherService.getCityForecast( id ).subscribe( forecast => {
       this._citiesService.addForecast( this._city, forecast );
-      this.forecast.addForecast(forecast);
+      this._forecast.addForecast(forecast);
     });
   }
 

@@ -3,6 +3,10 @@ import { formatDate } from '@angular/common'
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { CityForecast, CityWeather } from '../shared/weather.interface';
+import { UnitsTransformService } from '../core/units-transform.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.reducers';
+import * as fromUnitsActions from '../core/units.actions';
 
 @Component({
   selector: 'app-forecast',
@@ -15,6 +19,7 @@ export class ForecastComponent implements OnInit {
 
   _forecast: CityForecast;
   _forecastList: CityWeather[];
+  _temperatureUnits: string;
 
   public _temperature: ChartDataSets[] = [];
   public _lineChartLabels: Label[] = [];
@@ -73,20 +78,32 @@ export class ForecastComponent implements OnInit {
   public lineChartLegend = false;
   public lineChartType = 'line';
 
-  constructor() {}
+  constructor( private _store: Store<AppState>, private _unitsTranform: UnitsTransformService ) {
+    _store.select('unitsSystem').subscribe( units => {
+      
+      if ( units == fromUnitsActions.METRIC ) {
+        this._temperatureUnits = fromUnitsActions.units['METRIC'].temperatureUnits
+      } else {
+        this._temperatureUnits = fromUnitsActions.units['IMPERIAL'].temperatureUnits
+      }
+       
+      this.changeUnits( units );
+      
+    });
+  }
 
   ngOnInit() { }
 
-  public addForecast( forecast:CityForecast ) {
-    console.log(forecast);
-    
+  changeUnits( units: string ) {
+    // Transform the _temperature data through this._unitsTranform.toggleTemp()
+  }
+
+  public addForecast( forecast:CityForecast ) {    
     this._forecast = forecast;
     this._forecastList = forecast.list.slice(0,12);
     this._temperature = [];
-    this._temperature.push({data: this._forecastList.map( temp => temp.main.temp ), label: 'Temperature' });
+    this._temperature.push({data: this._forecastList.map( temp => temp.main.temp ), label: 'Temperature'});
     this._lineChartLabels = this._forecastList.map( temp => formatDate(temp.dt_txt, 'h a', 'en-US') );
-    console.log(this._temperature);
-    
   }
 
 }

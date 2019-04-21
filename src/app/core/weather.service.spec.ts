@@ -40,6 +40,7 @@ describe('WeatherService', () => {
     injector = getTestBed();
     service = injector.get(WeatherService);
     httpMock = injector.get(HttpTestingController);
+    service._unitsSystem = "metric";
   });
 
   afterEach(() => {
@@ -53,7 +54,7 @@ describe('WeatherService', () => {
   it(`should issue a request`, async(
     inject([HttpClient, HttpTestingController], (http: HttpClient, backend: HttpTestingController) => {
       
-      const groupWeatherUrl = `${environment.openWatherMapApi.baseUrl}${environment.openWatherMapApi.group}?id=${mockGroup}&APPID=${environment.openWatherMapApi.key}&units=metric`;
+      const groupWeatherUrl = `${environment.openWatherMapApi.baseUrl}${environment.openWatherMapApi.group}?id=${mockGroup}&APPID=${environment.openWatherMapApi.key}&units=${service._unitsSystem}`;
       
       service.getGroupWeather(mockGroup).subscribe();
       

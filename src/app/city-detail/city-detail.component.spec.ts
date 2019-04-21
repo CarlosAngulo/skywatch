@@ -72,14 +72,17 @@ describe('CityDetailComponent', () => {
     
     fixture = TestBed.createComponent(CityDetailComponent);
     component = fixture.componentInstance;
+    const citiesService = TestBed.get(CitiesService);
+    component._city = citiesService.getCurrentCity( 2650225 );
     fixture.detectChanges();
   }));
 
-  it('should create the City Detail Component', () => {
+  it('Should create', async(() => {
+    
     fixture.whenStable().then(()=> {
       expect(component).toBeTruthy();
     });
-  });
+  }));
 
   it('Should add the City Id', () => {
 

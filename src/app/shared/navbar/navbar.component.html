@@ -2,17 +2,16 @@
   
   <div class="container">
 
-    <a class="navbar-brand" href="./dashboard">
+    <a class="navbar-brand" routerLink="/dashboard">
       <fa-icon [icon]="fontAwesome.faBolt"></fa-icon>
       Skywatch
     </a>
   
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-secondary">
-          <input type="radio" name="options" id="metric" autocomplete="off" checked>
-          <fa-icon [icon]="fontAwesome.faTemperatureLow"></fa-icon>
-          Metric
-      </label>
+    <div class="btn-group btn-group-toggle" (click)="toggleUnitsSystem()">
+      <button class="btn btn-secondary">
+        {{ unitsSystem }}
+        <fa-icon [icon]="fontAwesome.faTemperatureLow"></fa-icon>
+      </button>
     </div>
 
   </div>

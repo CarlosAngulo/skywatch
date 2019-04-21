@@ -1,3 +1,16 @@
 .chart {
     padding: 50px 0
 }
+
+.axis-y {
+    display: block;
+    text-align: center;
+    transform: rotate(-90deg) translateY(-25px);
+    transform-origin: left top;
+    width: 85%;
+}
+
+.axis-x {
+    display: block;
+    text-align: center;
+}

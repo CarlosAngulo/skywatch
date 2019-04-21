@@ -20,12 +20,14 @@
 fa-icon {
     font-weight: normal;
     color: $icon-general-color;
+    margin-left: 5px;
 }
 
 .btn.btn-secondary {
     background-color: #08080a;
     color: rgba(255, 255, 255, 0.45);
     font-size: 0.9em;
+    text-transform: capitalize;
     cursor: pointer;
     &:hover {
         background-color: #333;
